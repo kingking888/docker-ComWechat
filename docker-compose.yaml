@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+    wechatpchook:
+        container_name: comwechat
+        ports:
+            - '5905:5905'
+        environment:
+            - VNCPASS=asdfgh123
+        ipc: host
+        volumes:
+            - "./volume/WeChat Files/:/home/user/.wine/drive_c/users/user/My Documents/WeChat Files/"
+            - "./volume/Application Data/:/home/user/.wine/drive_c/users/user/Application Data/"
+            - "./volume/python3/:/home/user/.wine/drive_c/python3/"
+        privileged: true
+        image: tomsnow1999/docker-com_wechat_robot

@@ -1,0 +1,29 @@
+name: Update Docker Hub Description
+on:
+  # workflow_run:
+  #   workflows: [CI to Docker Hub]
+  #   types: [completed]
+  #   branches:
+  #     - master
+  #   paths:
+  #     - README.md
+  #     - .github/workflows/dockerhub-description.yml
+  push:
+    branches:
+      - master
+    paths:
+      - README.md
+      - .github/workflows/docker_doc.yml
+jobs:
+  dockerHubDescription:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          short-description: ${{ github.event.repository.description }}
+          repository: ${{ secrets.DOCKER_HUB_USERNAME }}/docker-com_wechat_robot
