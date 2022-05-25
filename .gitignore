@@ -172,6 +172,3 @@ cython_debug/
 !/wine/winetricks.log
 /wine/Tencent/
 /volume/
-# !/wine/python3/DLLs/*
-# !/wine/python3/Lib/
-# !/wine/python3/Lib/venv/

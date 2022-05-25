@@ -1,6 +1,8 @@
 # docker-ComWechat
 A docker image for [ComWeChatRobot](https://github.com/ljc545w/ComWeChatRobot)
 
+## 经多次测试，此镜像无法正常运行。本项目归档！
+
 
 ``` shell
 docker run \
@@ -27,7 +29,5 @@ docker run \
 
 ## Known Issues
 当前我测试时容器内 wine 用 python 调用 wxRobot 会提示内存不足，暂未发现解决方法。
-
-wine 内也无法安装 .net framework 4.7.2 ，不知道上面提示内存不足是不是与此有关。
 
 另外在初次运行镜像给 wine 内安装 python 时可能也会出现一些问题，需要重启一次或多次容器（建议 docker exec 进入容器测试 pip 等依赖是否正常）

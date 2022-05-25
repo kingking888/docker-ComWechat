@@ -29,6 +29,22 @@ class DockerWechatHook:
         self.wechat = subprocess.run(['wine','/home/user/.wine/drive_c/Program Files/Tencent/WeChat/WeChat.exe'])
 
     def run_hook(self):
+        if not os.path.exists("/home/user/.wine/drive_c/vcpp.installed"):
+            print("当前 wine 内没有安装 vc++ 运行库，正在安装中...【请连接 VNC 手动点'下一步'】")
+            self.reg_hook = subprocess.run(['wine','MSVBCRT.AIO.2022.04.09.exe'])
+            with open("/home/user/.wine/drive_c/vcpp.installed", "w") as f:
+                f.write("true\n")
+            # 安装完成 python 后建议重启一次容器，目前发现在部分情况下安装完成 python 后无法使用 pip ，重启容器后就好
+            print("安装完成 vc++ 运行库后建议重启一次容器。")
+
+        if not os.path.exists("/home/user/.wine/drive_c/net.installed"):
+            print("当前 wine 内没有安装 .net，正在安装中...【请连接 VNC 手动点'下一步'】")
+            self.reg_hook = subprocess.run(['wine','ndp472-kb4054530-x86-x64-allos-enu.exe'])
+            with open("/home/user/.wine/drive_c/net.installed", "w") as f:
+                f.write("true\n")
+            # 安装完成 python 后建议重启一次容器，目前发现在部分情况下安装完成 python 后无法使用 pip ，重启容器后就好
+            print("安装完成 .net 后建议重启一次容器。")
+
         if not os.path.exists("/home/user/.wine/drive_c/python3/python.exe"):
             print("当前 wine 内没有安装 python，正在安装中...")
             self.reg_hook = subprocess.run(['wine','python-3.8.10.exe', '/quiet', 'TargetDir=C:\\python3', 'Include_debug=1', 'Include_symbols=1'])

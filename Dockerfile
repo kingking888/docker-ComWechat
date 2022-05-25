@@ -37,7 +37,12 @@ COPY python-3.8.10.exe python-3.8.10.exe
 # .net FrameWork 4.7.2
 # https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net472-offline-installer
 COPY ndp472-kb4054530-x86-x64-allos-enu.exe ndp472-kb4054530-x86-x64-allos-enu.exe
+# https://www.microsoft.com/en-us/download/details.aspx?id=30135
+COPY NetFxRepairTool.exe NetFxRepairTool.exe
+# https://www.ghxi.com/yxkhj.html/comment-page-3
+COPY MSVBCRT.AIO.2022.04.09.exe MSVBCRT.AIO.2022.04.09.exe
 COPY wine/Tencent.zip /Tencent.zip
+COPY wine/simsun.ttc  /home/user/.wine/drive_c/windows/Fonts/simsun.ttc
 COPY wine/微信.lnk /home/user/.wine/drive_c/users/Public/Desktop/微信.lnk
 COPY wine/system.reg  /home/user/.wine/system.reg
 COPY wine/user.reg  /home/user/.wine/user.reg
